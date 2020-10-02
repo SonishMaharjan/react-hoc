@@ -9,20 +9,28 @@ import withOnClick from "./withOnClick";
 
 import BaseMenu from "./BaseMenu";
 
+// const DropdownMenu = withToggle(
+//   withHandlers(withEscape(withClickOutside(withRef(withOnClick(BaseMenu)))))
+// );
+
 const DropdownMenu = withToggle(
   withHandlers(withEscape(withClickOutside(withRef(withOnClick(BaseMenu)))))
 );
 
+// debugger;
+
+// const DropdownMenu = () => BaseMenu;
+
 DropdownMenu.propTypes = {
   closeOnOutsideClick: PropTypes.bool,
   closeOnEscape: PropTypes.bool,
-  defaultOpen: PropTypes.bool
+  defaultOpen: PropTypes.bool,
 };
 
 DropdownMenu.defaultProps = {
   closeOnOutsideClick: false,
   closeOnEscape: false,
-  defaultOpen: false
+  defaultOpen: false,
 };
 
 export default DropdownMenu;

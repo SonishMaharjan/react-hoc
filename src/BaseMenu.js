@@ -9,7 +9,7 @@ const MenuContainer = styled.div`
 
 const MenuPosition = styled.div`
   position: absolute;
-  top: ${props => props.offsetTop}px;
+  top: ${(props) => props.offsetTop}px;
   left: 0;
   z-index: 1;
 `;
@@ -44,25 +44,41 @@ const Link = styled.a`
   }
 `;
 
-const BaseMenu = props => (
-  <MenuContainer ref={props.containerRef}>
+// const BaseMenu = (props) => (
+//   <MenuContainer ref={props.containerRef}>
+//     {props.children}
+
+//     {(!props.children || props.open) && (
+//       <MenuPosition offsetTop={props.offsetTop}>
+//         <Wrapper>
+//           {props.items.map((item) => (
+//             <Item key={item.label}>
+//               <Link href={item.link}>
+//                 {item.icon}
+//                 {item.label}
+//               </Link>
+//             </Item>
+//           ))}
+//         </Wrapper>
+//       </MenuPosition>
+//     )}
+//   </MenuContainer>
+// );
+
+const BaseMenu = (props) => (
+  <div id="my-ref" ref={props.containerRef}>
     {props.children}
-    
+
     {(!props.children || props.open) && (
-      <MenuPosition offsetTop={props.offsetTop}>
-        <Wrapper>
-          {props.items.map(item => (
-            <Item key={item.label}>
-               <Link href={item.link}>
-                {item.icon}
-                {item.label}
-               </Link>
-            </Item>
-          ))}
-        </Wrapper>
-      </MenuPosition>
+      <ul>
+        {props.items.map((item, index) => (
+          <li key={index}>
+            {item.icon} {item.label}
+          </li>
+        ))}
+      </ul>
     )}
-  </MenuContainer>
+  </div>
 );
 
 BaseMenu.propTypes = {
@@ -72,18 +88,18 @@ BaseMenu.propTypes = {
     PropTypes.shape({
       href: PropTypes.string,
       icon: PropTypes.string,
-      label: PropTypes.string
+      label: PropTypes.string,
     })
   ).isRequired,
   offsetTop: PropTypes.number,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 
 BaseMenu.defaultProps = {
   children: undefined,
   containerRef: null,
   offsetTop: 0,
-  open: false
+  open: false,
 };
 
 export default BaseMenu;

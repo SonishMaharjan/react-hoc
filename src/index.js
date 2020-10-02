@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from "./DropdownMenu";
 import menu from "./menu";
 
 const rootElement = document.getElementById("root");
